@@ -1,0 +1,94 @@
+<div layout="column" flex="100" ng-controller="AccountINVController">
+    <div layout="row" layout-padding layout-align="center center"  md-colors="{color: 'blue-grey-600'}">
+        <div layout="column" flex="33" flex-xs="50">
+            <div layout="row" layout-align="start center">
+                <img hide-xs ng-if="account.type" ng-src="resources/static/images/{{account.type}}-icon.png" style="height: 42px; width: 42px;"/>
+                <span hide-xs class="md-headline md-padding">{{account.name}}</span>
+                <span hide-gt-xs class="md-subhead md-padding">{{account.name}}</span>
+            </div>
+        </div>
+        <div layout="column" flex="66" hide-xs>
+            <div layout="row">
+                <div layout="column" flex="30" class="md-padding" layout-align="center center">
+                    <span class="md-subhead">Posição Bruta</span>
+                    <div layout="row" md-colors="{color: 'blue-grey-700'}">
+                        <div layout="column" layout-align="center center">
+                            <span class="md-body-2">{{account.grossBalance | currency}}</span>
+                            <span class="md-caption" md-colors="{color: 'blue-grey-300'}">Total</span>
+                        </div>
+                        <div layout="column" layout-align="center center">
+                            <div layout="row">
+                                <span class="md-body-2" style="margin: 0px 5px 0px 25px;">{{account.grossProfit | currency}}</span>
+                                <span class="md-body-2">({{account.percentGrossProfit | number:2}}%)</span>
+                            </div>
+                            <span class="md-caption" md-colors="{color: 'blue-grey-300'}">Lucro</span>
+                        </div>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+                <div layout="column" flex="30" class="md-padding" layout-align="center center">
+                    <span class="md-subhead">Posição Líquida</span>
+                    <div layout="row" md-colors="{color: 'blue-grey-700'}">
+                        <div layout="column" layout-align="center center">
+                            <span class="md-body-2">{{account.balance | currency}}</span>
+                            <span class="md-caption" md-colors="{color: 'blue-grey-300'}">Total</span>
+                        </div>
+                        <div layout="column" layout-align="center center">
+                            <div layout="row">
+                                <span class="md-body-2" style="margin: 0px 5px 0px 25px;">{{account.netProfit | currency}}</span>
+                                <span class="md-body-2">({{account.percentNetProfit | number:2}}%)</span>
+                            </div>
+                            <span class="md-caption" md-colors="{color: 'blue-grey-300'}">Lucro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div layout="row" layout-align="center center">
+        <div layout="column" flex="80" flex-xs="100">
+            <div layout="row" layout-align="center center">
+                <div layout="column" flex="90" ng-if="account.entries.length<=0">
+                    <h6 style="color: #7A7A7A;font-style: italic;">Não existem aportes realizados no período.</h6>
+                </div>
+                <table layout="column" flex="100" class="table-striped" style="margin:10px;" ng-if="account.entries.length>0">
+                    <thead>
+                    <tr layout="row">
+                        <th flex="10" flex-xs="33">Data</th>
+                        <th flex="15" hide-xs>Operação</th>
+                        <th flex="10" flex-xs="33">Qtd Cotas</th>
+                        <th flex="10" hide-xs>Ult. Preço</th>
+                        <th flex="10" hide-xs>Faixa IR</th>
+                        <th flex="10" hide-xs>Próx. Faixa IR</th>
+                        <th flex="10" hide-xs>IR</th>
+                        <th flex="10" hide-xs>Valor Bruto</th>
+                        <th flex="10" hide-xs>Valor Líquido</th>
+                        <th flex="5" flex-xs="33"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr layout="row" ng-repeat="item in account.entries"  layout-align="center center" class="c-hover">
+                            <td flex="10" flex-xs="33">{{ item.date | date: 'dd/MM/yyyy' }}</td>
+                            <td flex="15" hide-xs>{{ item.operation }}</td>
+                            <td flex="10" flex-xs="33">{{ item.quotesAvailable | number:2 }}</td>
+                            <td flex="10" flex-xs="33">{{ item.quoteLastValue | currency }}</td>
+                            <td flex="10" flex-xs="33">{{ item.incomeTaxPercent*100 | number:2 }}%</td>
+                            <td flex="10" flex-xs="33">{{ item.nextTaxRangeDate | date: 'dd/MM/yyyy' }}</td>
+                            <td flex="10" flex-xs="33">{{ item.incomeTaxAmount | currency }}</td>
+                            <td flex="10" flex-xs="33" my-currency="item.currentAmount"></td>
+                            <td flex="10" flex-xs="33" my-currency="(item.currentAmount - item.incomeTaxAmount)"></td>
+                            <td flex="5" flex-xs="33">
+                                <div layout="row">
+                                    <md-button class="md-icon-button" ng-click="remove(item)" aria-label="Remover">
+                                        <md-icon class="material-icons step md-18">highlight_off</md-icon>
+                                    </md-button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

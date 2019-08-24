@@ -1,0 +1,327 @@
+/********** >>> INDEX <<< ***********/
+body{
+    font-family: Roboto,Helvetica Neue,sans-serif !important;
+}
+
+/* Header */
+md-toolbar.header {
+    /*background-color: #f5f5f5 !important;*/
+    /*background-color: #22262e !important;*/
+        background: -webkit-linear-gradient(45deg, #263238 0%,#37474F 100%);
+}
+md-toolbar.header button.md-icon-button:hover{
+    background-color: rgba(158,158,158,0.2) !important;
+}
+md-toolbar.subheader{
+    min-height: 25px;
+}
+
+md-toolbar:not(.md-hue-1),
+.md-fab {
+  fill: #fff;
+}
+
+md-toolbar.subheader button.md-button{
+    min-height: 0;
+    margin: 3px;
+    height: 26px;
+    line-height: 26px;
+}
+
+md-toolbar.subheader md-menu-content{
+    background-color: #22262e
+}
+
+.top-menu-link {
+    position: relative;
+    font-weight: bold;
+    color: #b1b3b4;
+    font-size: 12px;
+    padding: 0 25px 0 20px;
+}
+
+.menu-link {
+    color: #b1b3b4;
+}
+
+
+/********** >>> GERAL <<< ***********/
+.border-radius-5 {
+    border-radius: 5px;
+}
+.border-top-radius-5{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.c-hover:hover{
+    background-color: rgba(158,158,158,0.2) !important;
+    cursor:pointer;
+}
+.c-no-margin{
+    margin: 0px !important;
+}
+
+.c-no-padding{
+    padding: 0 !important;
+}
+
+.c-padding-5{
+    padding: 5px;
+}
+
+.c-number-positive{
+    color:blue;
+}
+.c-number-negative{
+    color:red;
+}
+
+.md-title.highlighted {
+    border-bottom: 2px solid #93c47d;
+}
+
+.line-selection{
+    background-color: d9ead3;
+    font-weight: 500;
+}
+.color-selection{
+    color: #93c47d;
+}
+
+a {
+    color: #93c47d;
+}
+
+.no-error div.md-errors-spacer{
+    min-height:0px;
+    min-width:0px;
+}
+
+/********** >>> CARDS <<< ***********/
+md-card.flat{
+    box-shadow: none;
+    border: 1px solid rgba(0,0,0,.1);
+}
+md-card.no-border{
+    border: 0px;
+}
+md-card.no-bg{
+    background-color: rgb(250,250,250);
+}
+md-card.add{
+    border-style: dashed
+}
+md-card.add:hover{
+    border-style:solid;
+    cursor:pointer;
+    background: rgba(0,0,0,.02);
+}
+
+md-card.account: hover{
+
+}
+
+/********** >>> ICONS <<< ***********/
+.material-icons.md-18 {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    min-height: 0;
+    padding: 0;
+}
+.material-icons.md-24 {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+.material-icons.md-36 {
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+}
+.material-icons.md-48{
+    font-size:48px;
+    width:48px;
+    height:48px;
+}
+
+.icon-theme-64{
+    height: 64px;
+    width: 64px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 38px;
+    /*background: -webkit-linear-gradient(45deg, #263238 0%,#37474F 100%);*/
+    background-color: #37474F;
+}
+
+.icon-theme-42{
+    height: 42px;
+    width: 42px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 38px;
+    /*background: -webkit-linear-gradient(45deg, #263238 0%,#37474F 100%);*/
+    background-color: #37474F;
+}
+
+.md-headline .visibility-icon {
+    font-size: 32px;
+    height: 32px;
+    width: 32px;
+    line-height: 32px;
+}
+.md-display-1 .visibility-icon {
+    font-size: 34px;
+    height: 34px;
+    width: 34px;
+    line-height: 40px;
+}
+
+/********** >>> DIVIDER <<< ***********/
+md-divider.blue{
+    background-color:rgb(63,81,181);
+}
+md-divider.thin{
+    border-top: 1px solid grey;
+}
+
+
+/********** >>> TABLE <<< **********/
+table.table-striped > thead > tr > th {
+    border-top: 0 !important;
+    font-size: 12px;
+    text-align: center;
+    background: #78909C;
+    color: white;
+    padding: .75rem;
+}
+table.table-striped > tbody > tr > td {
+    border-top: 0 !important;
+    font-size: 12px;
+    text-align: center;
+    padding: 1px;
+    line-height: 3;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #ECEFF1;
+}
+
+.table-striped {
+    border: 1px solid rgba(0,0,0,0.12);
+}
+
+td > md-autocomplete,
+td > md-autocomplete > md-autocomplete-wrap,
+td > md-autocomplete > md-autocomplete-wrap > input{
+    height: unset !important;
+    font-size: 12px !important;
+}
+
+/********** >>> AUTOCOMPLETE <<< ***********/
+md-autocomplete {
+    background: white;
+}
+md-autocomplete input:not(.md-input) {
+    padding: 2px 2px 1px;
+    border-width: 0 0 1px;
+    line-height: 26px;
+    -ms-flex-preferred-size: 26px;
+}
+
+.md-autocomplete-suggestions li {
+    font-size: 12px;
+}
+
+md-autocomplete .md-show-clear-button button {
+     height: unset;
+}
+
+/********** >>> FILE UPLOAD <<< ***********/
+.file-drop-box{
+    border: 1px dashed rgba(0,0,0,0.12);
+    padding: 15px;
+    margin: 10px;
+}
+
+.file-drop-box-dragover{
+    border-color: rgb(63,81,181);
+    background-color: rgba(0,0,0,0.03);
+}
+
+.file-drop-box-dragover md-icon{
+    color:rgb(63,81,181);
+}
+
+/********** >>> TOOLBAR <<< ***********/
+md-toolbar.thin{
+    min-height:0;
+}
+md-toolbar.thin div.md-toolbar-tools{
+    height: inherit;
+}
+
+/********** >>> PROGRESS BAR <<< ***********/
+md-progress-linear{
+    position: absolute;
+    top: 59px;
+    z-index: 2;
+}
+
+/********** >>> TABS <<< ***********/
+md-tabs.md-no-animation md-tab-content {
+    transition: none;
+}
+
+/********** >>> STOCK <<< ***********/
+.operation-gain {
+    /*background: #5C6BC0 !important;*/
+    color: #5C6BC0 !important;
+}
+
+.operation-loss {
+    /*background: #EF5350 !important;*/
+    color: #EF5350 !important;
+}
+
+.stock-summary {
+    background: #1c2030;
+}
+
+.stock-summary .box {
+    min-width: 180px;
+    border-left: 1px solid grey;
+    font-family: Trebuchet MS,Tahoma,Arial,sans-serif;
+    padding: 5px 18px 5px 18px;
+}
+
+.stock-summary box:not(:first-child) {
+    min-width: 180px;
+    font-family: Trebuchet MS,Tahoma,Arial,sans-serif;
+    padding: 5px 18px 5px 18px;
+}
+
+.stock-summary .box .title {
+    color: #e1ecf2;
+    font-size: 12px;
+}
+
+.stock-summary .box .content.gain {
+    color: #3cbc98;
+}
+
+.stock-summary .box .content.loss {
+    color: #ff4a68;
+}
+
+.stock-summary .box .content .percent {
+    font-size: 22px;
+    line-height: 26px;
+}
+
+.stock-summary .box .content .value {
+    font-size: 12px;
+}
+
+

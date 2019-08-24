@@ -1,0 +1,41 @@
+<section ng-controller="AccountsController" ng-cloak="ng-cloak">
+        <div layout="row" layout-padding>
+            <div layout="column" flex-offset="5">
+                <div layout="row"  layout-align="start center" style="margin-top:20px">
+                    <md-icon md-colors="{color: 'blue-grey-100'}" class="material-icons step md-36 md-hue-2">account_balance</md-icon>
+                    <span class="md-title" md-colors="{color: 'blue-grey-700'}" style="margin-left:8px">Seus Ativos</span>
+                </div>
+            </div>
+        </div>
+        <div layout="row">
+            <div layout="column" flex="80" flex-xs="100" flex-offset-gt-xs="10">
+                <div layout="row" layout-wrap layout-align-xs="center center">
+                    <md-card ng-repeat="account in accounts"
+                             class="border-radius-5"
+                             ng-click="detail(account)"
+                             ng-init="elevation = 2"
+                             md-whiteframe="{{elevation}}"
+                             ng-mouseover="elevation=4"
+                             ng-mouseleave="elevation=2"
+                             style="min-width: 212px;max-width: 212px;cursor:pointer">
+                        <md-card-header class="md-body-2">
+                            <div layout="column" layout-align="center center" flex>
+                                <span style="margin-bottom:14px;text-align: center;min-height:48px">{{account.name}}</span>
+                                <md-divider></md-divider>
+                                <img ng-src="resources/static/images/{{account.type}}-icon.png" md-colors="{background: 'blue-grey-700'}" class="icon-theme-64"/>
+                                <span class="md-caption">{{account.type | accountTypeName}}</span>
+                            </div>
+                        </md-card-header>
+                        <md-card-content>
+                            <div layout="row" layout-align="center center" md-colors="{color: 'grey-700'}" class="md-headline ">
+                                <span my-currency="account.balance" layout-align="center center"></span>
+                            </div>
+                            <div layout="row" layout-align="center center" md-colors="{color: 'grey-700'}" class="md-caption" >
+                                    Atualização: {{account.lastUpdate | date: 'dd/MM/yyyy'}}
+                            </div>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+</section>

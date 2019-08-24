@@ -1,0 +1,58 @@
+server:
+    port: 8080
+
+DATABASE_URL: postgres://eriklacerda@localhost:5432/farofino
+
+spring:
+    application:
+        name: farofino
+        version: 2017.1
+    jpa:
+        database: HSQL
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        openInView: true
+        show_sql: true
+        generate-ddl: false
+        hibernate:
+            ddl-auto: false
+        properties:
+            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+            hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+    messageSource:
+        cacheSeconds: 1
+    mail:
+        transport:
+            protocol: smtp
+        host: smtp.gmail.com
+        port: 587
+        username: erik.lacerda@gmail.com
+        password: 4eglcu78
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
+                    ssl:
+                        enable: false
+                    connectiontimeout: 5000
+                    timeout: 3000
+                    writetimeout: 5000
+        test-connection: true
+
+cache:
+    timeToLiveSeconds: 3600
+    ehcache:
+        maxBytesLocalHeap: 16M
+
+application:
+    social:
+        google:
+            clientId: 316087946070-9qge3fgub11tvvh1vl87jt6ell13l12f.apps.googleusercontent.com
+            clientSecret: otHjsiw9GrRL4uRtwSnsG2_A
+    security:
+        secureChannel: http
+        key: farofino

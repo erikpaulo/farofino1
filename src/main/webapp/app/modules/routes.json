@@ -1,0 +1,126 @@
+[
+  {
+    "id": "plan",
+    "name": "Planeje",
+    "icon": "expand_more",
+    "originalPath": "/plan",
+    "templateUrl": "modules/dashboard/views/plan.html",
+    "dependencies": [
+      "modules/dashboard/controllers/index"
+    ],
+    "submodules": [
+      {
+        "id": "budget",
+        "name": "Orçamento"
+      }
+    ]
+  },
+  {
+    "id": "do",
+    "name": "Faça",
+    "icon": "expand_more",
+    "originalPath": "/plan",
+    "templateUrl": "modules/dashboard/views/do.html",
+    "dependencies": [
+      "modules/dashboard/controllers/index"
+    ],
+    "hasSubMenu": true,
+    "items" : [
+      {
+        "id": "conciliation",
+        "name":"Conciliar Lançamentos",
+        "originalPath": "/conciliation",
+        "templateUrl": "modules/account/views/conciliation.html",
+        "visible": true,
+        "dependencies": [
+          "modules/account/controllers/conciliation-controller"
+        ]
+      },
+      {
+        "id": "account",
+        "name":"Extrato de Contas",
+        "originalPath": "/accounts",
+        "templateUrl": "modules/account/views/accounts.html",
+        "visible": true,
+        "dependencies": [
+          "modules/account/controllers/accounts-controller"
+          ,"modules/shared/services/app-filters"
+        ]
+      },
+      {
+        "id": "accountEntries",
+        "name":"lançamentos",
+        "originalPath": "/account/:type/:accountID/detail",
+        "templateUrl": "modules/account/views/account.html",
+        "visible": false,
+        "dependencies": [
+          "modules/account/controllers/account-controller"
+          ,"modules/shared/services/app-filters"
+          ,"modules/account/controllers/conciliation-controller"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "check",
+    "name": "Verifique",
+    "icon": "expand_more",
+    "originalPath": "/plan",
+    "templateUrl": "modules/dashboard/views/check.html",
+    "dependencies": [
+      "modules/dashboard/controllers/index"
+    ],
+    "hasSubMenu": true,
+    "items" : [
+      {
+        "id": "patrimony",
+        "name":"Patrimônio",
+        "originalPath": "/patrimony",
+        "templateUrl": "modules/patrimony/views/patrimony.html",
+        "visible": true,
+        "dependencies": [
+          "modules/patrimony/controllers/patrimony-controller"
+          ,"modules/shared/services/app-filters"
+        ]
+      },
+      {
+        "id": "portfolio",
+        "name":"Carteira",
+        "originalPath": "/portfolio",
+        "templateUrl": "modules/portfolio/views/portfolio.html",
+        "visible": true,
+        "dependencies": [
+          "modules/portfolio/controllers/portfolio-controller"
+          ,"modules/shared/services/app-filters"
+        ]
+      },
+      {
+        "id": "consolidatedCF",
+        "name":"Fluxo de Caixa Consolidado",
+        "originalPath": "/cashFlow/consolidated",
+        "templateUrl": "modules/cashflow/views/consolidated-cashFlow.html",
+        "visible": true,
+        "dependencies": [
+          "modules/cashflow/controllers/cashFlow-controller"
+          ,"modules/shared/services/app-filters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "adapt",
+    "name": "Aprenda",
+    "icon": "expand_more",
+    "originalPath": "/plan",
+    "templateUrl": "modules/dashboard/views/do.html",
+    "dependencies": [
+      "modules/dashboard/controllers/index"
+    ],
+    "submodules": [
+      {
+        "id": "conciliation",
+        "name": "Conciliar Contas"
+      }
+    ]
+  }
+]

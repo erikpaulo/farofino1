@@ -1,0 +1,102 @@
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-signin-client_id" content="316087946070-9qge3fgub11tvvh1vl87jt6ell13l12f.apps.googleusercontent.com">
+
+<head >
+    <title>savefy</title>
+    <link rel="shortcut icon" href="resources/static/images/meEco-icon.svg">
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--TODO: Retirar referência para material design-->
+    <link rel="stylesheet" href="resources/lib/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="resources/lib/angular-material/angular-material.min.css">
+
+    <link rel="stylesheet" href="resources/styles/style.css">
+
+    <script type="text/javascript" src="resources/lib/requirejs/require.js" data-main="system/main.js"></script>
+
+    <style type="text/css">
+			[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+				display: none !important;
+			}
+		</style>
+</head>
+
+<body>
+    <section ng-controller="IndexController"  ng-cloak class="ng-cloak">
+        <section layout="column" ng-if="appContext.currentUser.authenticated" layout-fill>
+            <md-toolbar class="header" >
+                <div class="md-toolbar-tools">
+                    <img src="resources/static/images/savefy-icon.png" style="margin: 0px 10px 0 5px;" height="28" width="28"/>
+                    Savefy
+                    <span flex></span>
+                    <md-button class="md-icon-button" aria-label="Visibility" ng-click="changeCurrencyVisibility()">
+                        <ng-md-icon ng-if="!appContext.currencyVisible" icon="visibility_off"></ng-md-icon>
+                        <ng-md-icon ng-if="appContext.currencyVisible" icon="visibility"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Message">
+                        <ng-md-icon icon="mail"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="logout" ng-click="logout()">
+                        <md-icon class="material-icons">power_settings_new</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-divider class="thin"></md-divider>
+            <md-toolbar class="header subheader">
+                <div layout="row" layout-align="start center">
+                    <md-menu-bar>
+                        <md-menu ng-repeat="module in modules">
+                            <md-button ng-click="$mdMenu.open()">
+                                <div class="top-menu-link" layout-align="center center">
+                                    <span>{{module.name}}</span>
+                                    <md-icon style="font-size:18px;" class="material-icons">{{module.icon}}</md-icon>
+                                </div>
+                            </md-button>
+
+                            <md-menu-content style="background-color: #22262e">
+                                <md-menu-item ng-repeat="item in module.items" ng-if="item.visible">
+                                    <md-button class="menu-link" ng-click="appContext.menu.handleClick(item.originalPath)" >
+                                        {{item.name}}
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                    </md-menu-bar>
+                </div>
+            </md-toolbar>
+
+            <md-progress-linear ng-show="!ajaxCompleted" md-mode="indeterminate"></md-progress-linear>
+            <md-fab-speed-dial md-open="appContext.contextMenu.isOpen" md-direction="up" class="md-fling md-fab-bottom-right"  ng-if="appContext.contextMenu.actions.length > 0" ng-cloak>
+                <md-fab-trigger >
+                    <md-button aria-label="menu" class="md-fab md-primary md-whiteframe-7dp">
+                        <ng-md-icon icon="{{appContext.contextMenu.icon}}" aria-label="{{appContext.contextMenu.name}}" options='{"duration": 375}'></ng-md-icon>
+                    </md-button>
+                </md-fab-trigger>
+                <md-fab-actions>
+                    <div ng-repeat="action in appContext.contextMenu.actions">
+                        <md-tooltip md-direction="left">
+                            {{action.tooltip}}
+                        </md-tooltip>
+                        <md-button aria-label="{{action.icon}}" class="md-fab md-mini md-hue-3" ng-click="handleClick(action)" layout layout-align="center center">
+                            <md-icon ng-if="action.icon" class="material-icons"> {{action.icon}} </md-icon>
+                            <img ng-if="action.img" ng-src="resources/static/images/{{action.img}}"/>
+                        </md-button>
+                    </div>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+            <md-content layout="column" role="main" id="main-content" style="height:10000px;">
+                <div ng-if="appContext.currentUser.authenticated" ng-view></div>
+            </md-content>
+        </section>
+
+        <div ng-if="!appContext.currentUser.authenticated">
+            <div ng-if="!appContext.currentUser.authenticated" ng-view class="view"></div>
+        </div>
+    </section>
+
+</body>
+</html>
